@@ -1,8 +1,8 @@
-## Hands-Free Instant Web STT Component Set
+# Hands-Free Instant Web STT Component Set
 
-# Silero VAD browser library by [ricky0123](https://github.com/ricky0123/vad)
-# STT web service endpoint by [ololoshka2871](https://github.com/ololoshka2871/Voice-2-txt-faster-whisper) 
-# ... which is based on [guillaumekln/faster-whisper](https://github.com/guillaumekln/faster-whisper)
+### Silero VAD browser library by [ricky0123](https://github.com/ricky0123/vad)
+### STT web service endpoint by [ololoshka2871](https://github.com/ololoshka2871/Voice-2-txt-faster-whisper) 
+### ... which is based on [guillaumekln/faster-whisper](https://github.com/guillaumekln/faster-whisper)
 
 ## How to run
 1. Create python virtual environment: `python3 -m venv venv`
