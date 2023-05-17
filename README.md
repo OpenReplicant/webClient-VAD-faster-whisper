@@ -2,6 +2,10 @@
 Use browser/Cordova/Electron to passively listen for any voice, record until voice stops, POST audio to Faster-Whisper & get transcription back. 
 
 My GTX1070 gave results in less than half a second, so we'll call it instant.
+To configure VAD & STT libraries see their documentation.
+See ricky0123/vad and https://www.vad.ricky0123.com for details on the Voice Activity Detection.
+Implementing in React? See https://www.vad.ricky0123.com/docs/react 
+
 
 
 #### Silero VAD browser library by [ricky0123](https://github.com/ricky0123/vad)
@@ -25,8 +29,3 @@ After spending a couple days messing around I found the code from ololoshka and 
 Since I was unable to find anything like this all put together as a component set, here it is.
 This is just a starter/skeleton/sample for adding this feature to your own app/bot/etc.
 All credit to the devs behind all these projects, and the open source ethos.
-
-To configure VAD & STT libraries see their documentation.
-
-See ricky0123/vad and https://www.vad.ricky0123.com for details on the Voice Activity Detection.
-Implementing in React? See https://www.vad.ricky0123.com/docs/react 
