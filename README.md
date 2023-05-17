@@ -10,7 +10,7 @@ Implementing in React? See https://www.vad.ricky0123.com/docs/react
 
 #### Silero VAD browser library by [ricky0123](https://github.com/ricky0123/vad)
 #### STT web service endpoint by [ololoshka2871](https://github.com/ololoshka2871/Voice-2-txt-faster-whisper) 
-#### ... which is based on [guillaumekln/faster-whisper](https://github.com/guillaumekln/faster-whisper)
+#### ... which is based on [guillaumekln/faster-whisper](https://github.com/guillaumekln/faster-whisper) (and OpenAI model)
 
 
 ## How to run
