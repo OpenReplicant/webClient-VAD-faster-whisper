@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,14 +88,10 @@
           let blobber = new Blob([wav], { type: 'audio/wav' });
           console.log(blobber)
 
-          //DEBUG
-          //const downloadLink = document.createElement('a');
-          //downloadLink.href = URL.createObjectURL(blobber);
-          //downloadLink.download = 'transcription.wav';
-          //downloadLink.click();
 
-          
-          // POST to Faster-Whisper endpoint
+          // Record the start time
+          const startTime = performance.now();
+
           fetch('http://localhost:3157/transcribe', {
             method: 'POST',
             headers: {
@@ -102,24 +99,54 @@
             },
             body: blobber
           })
-            .then(response => response.transcribed_segments())
-            .then(transcribed_segments => {
+            .then(response => response.json())
+            .then(data => {
+              // Record the end time and calculate the latency
+              const endTime = performance.now();
+              const latency = endTime - startTime;
+              console.log('Delay: ' + latency);
 
-              // OUTPUT HANDLER
-              // Anything you want to do on the web client with STT.
 
-              console.log('STT:', transcribed_segments);
+              // log the JSON data to the console
+              console.log('Text: ' + data.transcribed_segments[0].text);
+              console.log(data);
+
+              // display the transcribed text and language on the web page
+              const transcribedSegments = data.transcribed_segments;
+              const language = data.language;
+
+              // create a new <div> element to display the transcribed text
+              const textDiv = document.createElement('div');
+              textDiv.textContent = `STT Delay: ${latency}ms`;
+
+              // create a new <ul> element to display the transcribed segments
+              const segmentsList = document.createElement('ul');
+              segmentsList.textContent = 'Segments:';
+
+              // loop through the transcribed segments and create a new <li> element for each one
+              transcribedSegments.forEach(segment => {
+                const segmentLi = document.createElement('li');
+                segmentLi.textContent = `Text: ${segment.text} | Start: ${segment.start} | End: ${segment.end}`;
+                segmentsList.appendChild(segmentLi);
+              });
+
+              // create a new <div> element to display the language
+              const languageDiv = document.createElement('div');
+              languageDiv.textContent = `Language: ${language}`;
+
+              // append the elements to the DOM
+              document.body.appendChild(textDiv);
+              document.body.appendChild(segmentsList);
+              document.body.appendChild(languageDiv);
             })
-            .catch(error => {
-              console.error('Transcription failed:', error);
-            });
-        }
+            .catch(error => console.error(error));
+        }   //fetch
 
-      })
-    myvad.start()
-  }
-  main()
+      }); //myvad
+      myvad.start()
+
+    }   //main
+    main()
   </script>
-  
 </body>
 </html>
