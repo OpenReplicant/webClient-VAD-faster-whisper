@@ -17,7 +17,7 @@ Implementing in React? See https://www.vad.ricky0123.com/docs/react
 1. Create python virtual environment: `python3 -m venv venv`
 2. Activate virtual environment: `source venv/bin/activate`
 3. Install requirements: `pip install -r requirements.txt`
-4. Run server: `python main.py`
+4. Run server: `python main.py` (Enable CUDA: -c cuda) (Tiny model: -m tiny) (Large model: -m large-v2)
 5. Open browser to localhost:3157 (0.0.0.0 is not valid for mic access outside HTTPS).
 6. Approve microphone access and start speaking. Output in console & page.
 
