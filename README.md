@@ -1,7 +1,7 @@
 # Hands-Free Instant Web STT Component Set
-Use browser/Cordova/Electron to passively listen for any voice, record until voice stops, POST audio to Faster-Whisper & get transcription back. 
+Without buttons or wake-words, use any browser (Cordova/Electron) to passively listen for any voice, record until voice stops, POST audio to Faster-Whisper & get transcription back with language detected. 
 
-My GTX1070 gave results in less than half a second, so we'll call it instant.
+Tiny model on my GTX1070 gave results in less than half a second, so we'll call it instant... Large-V2 model took 1.5-3 sec.
 To configure VAD & STT libraries see their documentation.
 See ricky0123/vad and https://www.vad.ricky0123.com for details on the Voice Activity Detection.
 Implementing in React? See https://www.vad.ricky0123.com/docs/react 
@@ -18,8 +18,8 @@ Implementing in React? See https://www.vad.ricky0123.com/docs/react
 2. Activate virtual environment: `source venv/bin/activate`
 3. Install requirements: `pip install -r requirements.txt`
 4. Run server: `python main.py`
-5. Open browser to localhost:3157 and open the console log.
-6. Approve microphone access and start speaking. Output in console.
+5. Open browser to localhost:3157 (0.0.0.0 is not valid for mic access outside HTTPS).
+6. Approve microphone access and start speaking. Output in console & page.
 
 
 ## Motivation
