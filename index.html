@@ -9,11 +9,7 @@
 </head>
 
 <body>
-
-  <h2>Voice Activity Detection + Faster-Whisper</h2>
-  <h2>= Always-on instant transcription service</h2>
-  <h3>See console.log for outputs.</h3>
-
+  <h2>Hands-Free Instant Web STT Component Set</h2>
   <p>Sends POST request to <span>/transcribe</span> with audio data in .wav format.</p>
   <p>Returns JSON:</p>
   <pre>
@@ -24,7 +20,6 @@
   "language": "<lang code>"
 }
   </pre>
-
 
   <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.7/dist/bundle.min.js"></script>
@@ -88,8 +83,7 @@
           let blobber = new Blob([wav], { type: 'audio/wav' });
           console.log(blobber)
 
-
-          // Record the start time
+          // BENCHMARK: Record the start time
           const startTime = performance.now();
 
           fetch('http://localhost:3157/transcribe', {
@@ -101,23 +95,25 @@
           })
             .then(response => response.json())
             .then(data => {
-              // Record the end time and calculate the latency
+              // BENCHMARK: Record end time and calculate latency
               const endTime = performance.now();
               const latency = endTime - startTime;
               console.log('Delay: ' + latency);
 
-
               // log the JSON data to the console
-              console.log('Text: ' + data.transcribed_segments[0].text);
-              console.log(data);
+              //console.log(data);
 
               // display the transcribed text and language on the web page
               const transcribedSegments = data.transcribed_segments;
               const language = data.language;
 
+              // All together now!
+              const tranString = data.transcribed_segments.map(segment => segment.text).join('');
+              console.log(tranString)
+
               // create a new <div> element to display the transcribed text
               const textDiv = document.createElement('div');
-              textDiv.textContent = `STT Delay: ${latency}ms`;
+              textDiv.textContent = `${latency}ms to transcribe: ${tranString}`;
 
               // create a new <ul> element to display the transcribed segments
               const segmentsList = document.createElement('ul');
